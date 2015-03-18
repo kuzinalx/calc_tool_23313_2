@@ -13,8 +13,8 @@ public:
     }
     void raise() const { throw *this; }
     CalcToolException *clone() const { return new CalcToolException(*this); }
-    virtual ~CalcToolException() _GLIBCXX_USE_NOEXCEPT {  }
-    virtual const char* what() const _GLIBCXX_USE_NOEXCEPT
+    virtual ~CalcToolException() throw() {  }
+    virtual const char* what() const throw()
     {
         return m_data.data();
     }
