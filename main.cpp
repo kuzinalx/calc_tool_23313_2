@@ -5,6 +5,7 @@
 #include <QTextCodec>
 #include "mode_functions.h"
 #include "calc_tool_exception.h"
+#include <QFileInfo>
 
 QTextStream cout(stdout);
 
@@ -22,7 +23,14 @@ int main(int argc, char *argv[])
 #endif
     try {
         if ( argc < 2 )
-            Error( "Первым аргументом командной строки должно быть имя входного файла." );
+        {
+            QFileInfo fi( argv[0] );
+            cout << QString( "Командная строка для " ) + fi.fileName() << ":" << endl
+                 << fi.fileName() + " cmdFileName" + " <outputFileName>" << endl
+                 << QString( "cmdFileName --- входной файл с командами" ) << endl
+                 << QString( "outputFileName --- выходной файл для записи результатов. Если не указан, результат выводится в stdout" ) << endl;
+            return 0;
+        };
         QFile fileIn( argv[1] );
         if ( !fileIn.open( QIODevice::ReadOnly ) )
             Error( QString( "Не удалось открыть файл '" ) + argv[1] + "'" );
