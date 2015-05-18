@@ -22,6 +22,33 @@ int main(int argc, char *argv[])
     cout.setCodec( QTextCodec::codecForName( "CP866" ) );
 #endif
     try {
+
+        // Для отладки вычисления значений символьных выражений (задание 4) можно раскомментировать этот блок
+        /*
+        ExpressionCalc ec( str );
+        QVector<QString> vars;
+        vars << "x";
+        QVector<double> vals;
+        vals << 2;
+
+        for ( int i = 0; i < vals.size(); i++ )
+            cout << vars[i] << " = " << vals[i] << endl;
+
+        QString str = "-(0.3 -1)*x^2";  // результат 2.8
+        ec.SetExpression( str );
+        cout << str << " = " << ec.Calculate( vars, vals ) << endl;
+
+        str = "(sin(x))^2 + ( cos( x ) )^2";  // результат 1
+        ec.SetExpression( str );
+        cout << str << " = " << ec.Calculate( vars, vals ) << endl;
+
+        str = "( exp( 2*ln( x ) ) )^-0.5";
+        ec.SetExpression( str );
+        cout << str << " = " << ec.Calculate( vars, vals ) << endl;
+
+        return 0;
+        */
+
         if ( argc < 2 )
         {
             QFileInfo fi( argv[0] );
