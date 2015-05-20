@@ -1,4 +1,8 @@
 #include "expression_calc.h"
+#include <cmath>
+
+// описана в main
+void Error( const QString& report );
 
 /*static QString curExpr;
 
@@ -94,4 +98,28 @@ char   ExpressionCalc::ReadOperation()
 void ExpressionCalc::Unwind()
 {
     // "раскрутка" стека операций
+    while ( !m_stackOp.empty() )
+    {
+        double b = m_stack.pop();
+        double a = m_stack.pop();
+        char op = m_stackOp.pop();
+        switch ( op )
+        {
+        case '+':
+            a = a + b;
+            break;
+        case '-':
+            a = a - b;
+            break;
+        case '*':
+            a = a*b; break;
+        case '/':
+            a = a/b; break;
+        case '^':
+            a = pow( a, b ); break;
+        default:
+            Error( QString( "Неизвестная операция '" ) + op + "'" );
+        };
+        m_stack.push( a );
+    };
 }
