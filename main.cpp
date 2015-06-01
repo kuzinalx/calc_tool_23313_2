@@ -24,8 +24,8 @@ int main(int argc, char *argv[])
     try {
 
         // Для отладки вычисления значений символьных выражений (задание 4) можно раскомментировать этот блок
-        /*
-        ExpressionCalc ec( str );
+        //*
+        ExpressionCalc ec;
         QVector<QString> vars;
         vars << "x";
         QVector<double> vals;
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
         cout << str << " = " << ec.Calculate( vars, vals ) << endl;
 
         return 0;
-        */
+        //*/
 
         if ( argc < 2 )
         {
