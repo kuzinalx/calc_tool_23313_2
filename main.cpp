@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     try {
 
         // Для отладки вычисления значений символьных выражений (задание 4) можно раскомментировать этот блок
-        //*
+        /*
         ExpressionCalc ec;
         QVector<QString> vars;
         vars << "x";
